@@ -8,10 +8,8 @@ class Numbers:
         self.tries = 0
 
     def getResult(self,x):
-        print("Adivina: ",x)
         self.result = self.number.checkNumber(x)
         self.result = self.result[3] + self.result [12]
-        print(self.result[0],'G')
         return self.result
 
     def play(self):
@@ -30,7 +28,6 @@ class Numbers:
                     break
 
                 if int(self.result[0]) < int(prevResult[0]):
-                    print("res",prevResult,self.result)
                     self.guess[idx] = str(int(self.guess[idx]) -1)
                     break
                 self.guess = ''.join(self.guess)
@@ -38,3 +35,6 @@ class Numbers:
 
     def getTries(self):
         return self.tries
+    def getFinalChoice(self):
+        x = ''.join(self.guess)
+        return x
