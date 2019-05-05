@@ -4,30 +4,30 @@ class Guess:
         self.number = str(number)
         self.g = 0
         self.r = 0
+        self.r1 = {}
         self.result = ''
     def checkNumber(self,guess):
         self.g = 0
         self.r = 0
-        for idx, letter in enumerate(guess):
-            if self.number[idx] == letter:
-                self.g += 1
-        for idx, letter in enumerate(self.number):
-            if guess[idx] in self.number and guess[idx] != letter :
-                self.r += 1
-        self.result = self.g,'G  ',self.r,'R'
-        return self.result
+        self.r1 = {}
+        try:
+            int(guess)
+            for idx, letter in enumerate(guess):
+                if self.number[idx] == letter:
+                    self.g += 1
+                else:
+                    if self.number[idx] in guess:
+                        self.r1[letter] = 1
+        except IndexError:
+            return "El numero debe ser de cuatro digitos"
+        except ValueError:
+            return "Solo se pueden ingresar numeros"
+        else:
+            for value in self.r1:
+                self.r = self.r + self.r1[value]
+            self.result = 'G: ' + str(self.g) + '  |  R: ' + str(self.r)
+            return self.result
     def checkWin(self):
         if self.g == 4:
             return False
         return True
-
-def runGame ():
-    my_number = Guess(1234)
-    game = True
-    while game:
-        guess = input("Adivina el numero: ")
-
-        print(my_number.checkNumber(guess))
-        game = my_number.checkWin()
-
-runGame()
