@@ -1,9 +1,12 @@
-from numbers import Guess_number
+from numbers import Guess
 
-my_number = Guess_number()
+my_number = Guess()
 game = True
 while game:
-        guess = input("guess: ")
-        print(my_number.check_number(guess))
-        game = my_number.check_win()
+        guess = input("Adivina: ")
+        print(my_number.checkNumber(guess))
+        game = my_number.checkWin()
+
+if not game:
+	print("Se ha adivinado el numero en ",my_number.getTries()," intentos")
 

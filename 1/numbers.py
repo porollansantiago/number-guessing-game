@@ -6,10 +6,12 @@ class Guess:
         self.r = 0
         self.r1 = {}
         self.result = ''
+        self.tries = 0
     def checkNumber(self,guess):
         self.g = 0
         self.r = 0
         self.r1 = {}
+        self.tries += 1
         try:
             int(guess)
             for idx, letter in enumerate(guess):
@@ -31,3 +33,5 @@ class Guess:
         if self.g == 4:
             return False
         return True
+    def getTries(self):
+        return self.tries
