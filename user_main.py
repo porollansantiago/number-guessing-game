@@ -5,7 +5,8 @@ def main():
 
     while game.check_win():
         number = input("Adivine: ")
-        print(game.compare(number))
+        game.compare(number)
+        print(game.get_result())
 
     print("Se ha terminado en ",game.get_tries()," intentos")
 

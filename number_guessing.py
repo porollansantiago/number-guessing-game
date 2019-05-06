@@ -19,7 +19,7 @@ class Number_guessing:
                 if self.to_guess[idx] in number:
                     self.R_dict[digit] = 1
 
-        return self.get_result()
+
     
     def check_index(self,number):
         if len(number) == 4:
@@ -34,22 +34,19 @@ class Number_guessing:
     def get_R(self):
         for key in self.R_dict:
             self.R = self.R + self.R_dict[key]
-        if self.R == 0:
-            return ''
-        else:
-            return str(self.R) + 'R'
+        return str(self.R)
 
     def get_G(self):
-        if self.G == 0:
-            return ''
-        else:
-            
-            return str(self.G) + 'G '
+        return str(self.G)
 
     def get_result(self):
+        result = self.get_G() + self.get_R()
         if self.G == 0 and self.R == 0:
             return "Sin coincidencias"
-        result = self.get_G() + self.get_R()
+        elif self.G == 0:
+            result = result[1] + 'R'
+        else:
+            result = result[0] + 'G ' + result[1] + 'R'
         return result
 
     def check_win(self):
