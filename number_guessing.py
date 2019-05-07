@@ -45,6 +45,8 @@ class Number_guessing:
             return "Sin coincidencias"
         elif self.G == 0:
             result = result[1] + 'R'
+        elif self.R == 0:
+            result = result[0] + 'G '
         else:
             result = result[0] + 'G ' + result[1] + 'R'
         return result
